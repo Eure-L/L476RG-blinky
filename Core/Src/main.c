@@ -68,6 +68,11 @@ int _write(int fd, char* ptr, int len) {
   }
   return -1;
 }
+
+
+void do_stuff(){
+  handlers_polling();
+}
 /* USER CODE END 0 */
 
 /**

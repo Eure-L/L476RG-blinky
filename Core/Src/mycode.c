@@ -44,6 +44,9 @@ int blink_period(uint32_t ms_period, uint32_t * last_blink){
     return 1;
 }
 
+// Input flags
+uint8_t btn_pressed = 0;
+
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
@@ -51,20 +54,15 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     btn_pressed = 1;
 }
 
-// Input flags
-uint8_t btn_pressed = 0;
-
-// Handlers handling function
-void handlers_polling(){
-    handler_button();
-}
-
-
 void handler_button(){
-
     if(!btn_pressed)
         return;
 
     btn_pressed = 0;
     printf("Button pressed !\r\n");
+}
+
+// Handlers handling function
+void handlers_polling(){
+    handler_button();
 }
